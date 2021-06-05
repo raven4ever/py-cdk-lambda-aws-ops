@@ -30,10 +30,14 @@ def lambda_handler(event, context):
 
     if operation_type == 'start':
         start_instances(instance_ids)
+        return_msg = f'Started instances with ids: {instance_ids}...'
     elif operation_type == 'stop':
         stop_instances(instance_ids)
+        return_msg = f'Stropped instances with ids: {instance_ids}...'
     else:
-        print(f'Operation {operation_type} cannot be handled!')
+        return_msg = f'Operation {operation_type} cannot be handled!'
+
+    return return_msg
 
 
 if __name__ == '__main__':
