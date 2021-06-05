@@ -1,12 +1,10 @@
 import setuptools
 
-
 with open("README.md") as fp:
     long_description = fp.read()
 
-
 setuptools.setup(
-    name="py_cdk_lambda_aws_ops",
+    name="infra",
     version="0.0.1",
 
     description="An empty CDK Python app",
@@ -15,14 +13,17 @@ setuptools.setup(
 
     author="author",
 
-    package_dir={"": "py_cdk_lambda_aws_ops"},
-    packages=setuptools.find_packages(where="py_cdk_lambda_aws_ops"),
+    package_dir={"": "infra"},
+    packages=setuptools.find_packages(where="infra"),
 
     install_requires=[
-        "aws-cdk.core==1.107.0",
+        "aws-cdk.core",
+        "aws-cdk.aws_lambda",
+        "aws-cdk.aws_lambda_python",
+        "aws-cdk.aws_apigateway"
     ],
 
-    python_requires=">=3.6",
+    python_requires=">=3.8",
 
     classifiers=[
         "Development Status :: 4 - Beta",
