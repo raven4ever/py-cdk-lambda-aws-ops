@@ -1,58 +1,33 @@
+# Lambda Stop & Start Unused Infrastructure
 
-# Welcome to your CDK Python project!
+## Context
 
-This is a blank project for Python development with CDK.
+In the effort to reduce the overall AWS costs we decided to stop all the AWS infrastructure that is not needed to run
+after business hours.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+In the first phase, this process will stop all RDS, DocumentDB, EC2 and Fargate instances related to the staging
+environment.
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+## How it works
 
-To manually create a virtualenv on MacOS and Linux:
+The project uses the [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) library provided by
+AWS.
 
-```
-$ python -m venv .venv
-```
+## Structure
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
+## Requirements
 
-```
-$ source .venv/bin/activate
-```
+### Local
 
-If you are a Windows platform, you would activate the virtualenv like this:
+The development of the whole project was made locally as an independent Python project.
 
-```
-% .venv\Scripts\activate.bat
-```
+The main requirement is to have a Python 3.8+ environment set up with the `boto3` library installed.
 
-Once the virtualenv is activated, you can install the required dependencies.
-
-```
-$ pip install -r requirements.txt
+```shell
+python -m venv venv
+source ./venv/bin/activate
+pip install -r requirements.txt
+python main.py
 ```
 
-At this point you can now synthesize the CloudFormation template for this code.
-
-```
-$ cdk synth
-```
-
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
-
-## Useful commands
-
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
-
-Enjoy!
+### Lambda

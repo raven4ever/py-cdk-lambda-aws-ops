@@ -30,7 +30,7 @@ class AwsOpsStack(core.Stack):
                                                   runtime=lmdb.Runtime.PYTHON_3_8,
                                                   index='main.py',
                                                   handler='lambda_handler',
-                                                  entry='lambdaz/start_stop_ec2',
+                                                  entry='lambdaz/start_stop_resources',
                                                   role=stop_start_ec2s_role,
                                                   current_version_options=lmdb.VersionOptions(
                                                       removal_policy=core.RemovalPolicy.RETAIN)
